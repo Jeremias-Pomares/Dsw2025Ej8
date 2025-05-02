@@ -3,7 +3,7 @@
 public class CuentaBancaria
 {
     public string Numero{get;private set;}
-    public decimal Saldo{get; private set;}
+    public decimal Saldo{get; set;}
     public Estado EstadoCuenta {get; set;}
     public string[] Titulares {get;init;}
 
@@ -18,12 +18,12 @@ public class CuentaBancaria
         Saldo = saldo;
     }
     
-    public void Depositar(decimal monto)
+    public virtual void Depositar(decimal monto)
     {
         //Depende del tipo de cuenta
     }
 
-    public void Retirar(decimal monto)
+    public virtual void Retirar(decimal monto)
     {
         //Depende del tipo de cuenta
     }

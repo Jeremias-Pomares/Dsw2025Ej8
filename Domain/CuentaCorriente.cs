@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 namespace Dsw2025Ej8.Domain;
 
 public class CuentaCorriente : CuentaBancaria
-{
-    public CuentaCorriente(string Numero, decimal Saldo, Estado Estado, string[] Titulares) : base(Numero, Saldo, Estado, Titulares)
-    {
-    }
+{   
     public decimal LimiteDeDescubierto { get; init; }
     public decimal Comision { get; init; }
+    public CuentaCorriente(string Numero, decimal Saldo) : base(Numero, Saldo)
+    {
+        EstadoCuenta = Estado.Activa;
+    }
+    
     public override void Depositar(decimal monto)
     {
         monto -= monto * Comision;
@@ -22,12 +24,12 @@ public class CuentaCorriente : CuentaBancaria
     {
         if (monto <= 0)
             throw new MontoNoValidoException();
-        if(!Estado.Activa)
+        if(EstadoCuenta != Estado.Activa)
             throw new CuentaNoActivaException();
         if (Saldo - monto < -LimiteDeDescubierto)
         {
+            EstadoCuenta = Estado.Suspendida;
             throw new SaldoInsuficienteException();
-            Estado = Estado.Suspendida;
         }
         Saldo -= monto;
     }

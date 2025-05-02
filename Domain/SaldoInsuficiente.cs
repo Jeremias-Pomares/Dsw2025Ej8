@@ -1,6 +1,6 @@
 using System;
 
-public class SaldoException : Exception
+public class SaldoInsuficienteException : Exception
 {
     // Mensaje predeterminado
     private const string DefaultMessage = "La cuenta no cuenta con saldo suficiente para la operación solicitada.";
