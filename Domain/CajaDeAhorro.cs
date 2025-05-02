@@ -8,11 +8,12 @@ namespace Dsw2025Ej8.Domain;
 
 public class CajaDeAhorro : CuentaBancaria
 {
-
-    public CajaDeAhorro(string Numero, decimal Saldo, Estado Estado, string[] Titulares) : base(Numero, Saldo)
-    {
-    }
     public decimal TasaDeInteres { get; init; }
+    public CajaDeAhorro(string Numero, decimal Saldo) : base(Numero, Saldo)
+    {
+        EstadoCuenta = Estado.Activa;
+    }
+    
     public override void Depositar(decimal monto)
     {
         Saldo += monto;
@@ -23,9 +24,10 @@ public class CajaDeAhorro : CuentaBancaria
             throw new MontoNoValidoException();
         if (Saldo < monto)
         {
+            EstadoCuenta = Estado.Suspendida;
             throw new SaldoInsuficienteException();
-            Estado = Estado.Suspendida;
         }
+
         Saldo -= monto;
     }
     public void AplicarInteres()

@@ -1,11 +1,11 @@
 using System;
 
-public class MontoException : Exception
+public class MontoNoValidoException : Exception
 {
     // Mensaje predeterminado
     private const string DefaultMessage = "El monto ingreso no es valido. Los montos deben ser mayores a 0";
 
     // Constructores
-    public SaldoInsuficienteException() : base(DefaultMessage) { }
+    public MontoNoValidoException() : base(DefaultMessage) { }
     
 }
