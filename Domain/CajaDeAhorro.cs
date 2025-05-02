@@ -28,7 +28,7 @@ public class CajaDeAhorro : CuentaBancaria
         }
         Saldo -= monto;
     }
-    public override void AplicarInteres()
+    public void AplicarInteres()
     {
         Saldo += Saldo * TasaDeInteres;
     }
