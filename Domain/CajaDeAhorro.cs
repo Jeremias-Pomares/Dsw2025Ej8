@@ -8,6 +8,7 @@ namespace Dsw2025Ej8.Domain;
 
 public class CajaDeAhorro : CuentaBancaria
 {
+
     public CajaDeAhorro(string Numero, decimal Saldo, Estado Estado, string[] Titulares) : base(Numero, Saldo)
     {
     }
